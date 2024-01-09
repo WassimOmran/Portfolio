@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize dark mode
     initializeDarkMode();
 
-    // Rest of your existing scripts...
     const menuIcon = document.querySelector('#menu-icon');
     const navbar = document.querySelector('.navbar');
 
