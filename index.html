@@ -250,21 +250,25 @@
     <!--Contact Us Section Design-->
     <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Us</span></h2>
-
-        <form action="#">
+    
+        <form action="https://formspree.io/f/xoqgqgko" method="POST">
             <div class="input-box">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Email Address">
+                <input type="text" name="Full Name" placeholder="Full Name">
+                <input type="email" name="Email Address" placeholder="Email Address">
             </div>
-
+        
             <div class="input-box">
-                <input type="number" placeholder="Mobile Number">
-                <input type="text" placeholder="Email Subject">
+                <input type="tel" name="Mobile Number" placeholder="Mobile Number">
+                <input type="text" name="Email Subject" placeholder="Email Subject">
             </div>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-            <a href="mailto:wassimomran62@gmail.com" class="btn">Send Email</a>
+        
+            <textarea name="message" cols="30" rows="10" placeholder="Your Message"></textarea>
+        
+            <button type="submit" class="btn">Send Message</button>
         </form>
+
     </section>
+    
 
      <!--Footer Section Design-->
      <footer class="footer">
