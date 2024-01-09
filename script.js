@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Function to create the dark mode toggle button
     const createDarkModeToggle = () => {
-        const darkModeToggle = document.createElement('button');
-        darkModeToggle.id = 'darkModeToggle';
-        darkModeToggle.textContent = 'Dark Mode';
-        document.body.appendChild(darkModeToggle);
+        const darkModeToggleContainer = document.createElement('div');
+        darkModeToggleContainer.id = 'darkModeToggleContainer';
+        darkModeToggleContainer.innerHTML = '<button id="darkModeToggle">Dark Mode</button>';
+        
+        const darkModeToggle = darkModeToggleContainer.querySelector('#darkModeToggle');
+        document.getElementById('download-cv').parentNode.appendChild(darkModeToggleContainer);
 
-        // Add hover animation class
+        // Add fade animation class
         darkModeToggle.addEventListener('mouseover', () => {
             darkModeToggle.classList.add('hover-animation');
         });
