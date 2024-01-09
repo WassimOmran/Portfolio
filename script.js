@@ -1,33 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    const body = document.body;
+    // Function to create the dark mode toggle button
+    const createDarkModeToggle = () => {
+        const darkModeToggle = document.createElement('button');
+        darkModeToggle.id = 'darkModeToggle';
+        darkModeToggle.textContent = 'Dark Mode';
+        document.body.appendChild(darkModeToggle);
 
-    // Check if dark mode preference is saved in localStorage
-    const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+        // Add hover animation class
+        darkModeToggle.addEventListener('mouseover', () => {
+            darkModeToggle.classList.add('hover-animation');
+        });
 
-    // Toggle dark mode based on preference
-    body.classList.toggle('dark-mode', isDarkMode);
-    darkModeToggle.classList.toggle('dark-mode', isDarkMode);
+        darkModeToggle.addEventListener('mouseout', () => {
+            darkModeToggle.classList.remove('hover-animation');
+        });
 
-    // Event listener for dark mode toggle button
-    darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        darkModeToggle.classList.toggle('dark-mode');
+        // Toggle dark mode on button click
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            darkModeToggle.classList.toggle('dark-mode');
 
-        // Save dark mode preference in localStorage
-        localStorage.setItem('darkMode', body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
-    });
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+        });
+    };
 
+    // Function to initialize dark mode on page load
+    const initializeDarkMode = () => {
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+        document.body.classList.toggle('dark-mode', isDarkMode);
+        createDarkModeToggle();
+    };
+
+    // Initialize dark mode
+    initializeDarkMode();
+
+    // Rest of your existing scripts...
     const menuIcon = document.querySelector('#menu-icon');
     const navbar = document.querySelector('.navbar');
 
-    // Mobile menu icon click event
     menuIcon.addEventListener('click', () => {
         menuIcon.classList.toggle('bx-x');
         navbar.classList.toggle('active');
     });
 
-    // Mobile menu link click event
     document.querySelectorAll('.navbar a').forEach(link => {
         link.addEventListener('click', () => {
             menuIcon.classList.remove('bx-x');
@@ -35,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll sections active link
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('header nav a');
 
@@ -54,12 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Sticky navbar
         let header = document.querySelector('header');
         header.classList.toggle('sticky', window.scrollY > 100);
     });
 
-    // Scroll reveal
     ScrollReveal({
         distance: '80px',
         duration: 2000,
@@ -71,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
     ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
     ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
-    // Typed.js
     const typed = new Typed('.multiple-text', {
         strings: ['Electrical Engineer', 'Inventor', 'Developer'],
         typeSpeed: 100,
